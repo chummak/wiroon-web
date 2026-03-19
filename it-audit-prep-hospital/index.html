@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แนวคำถาม ผู้ตรวจราชการ เขต 9 · สาย IT โรงพยาบาล</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+  :root {
+    --primary:     #1d6fa4;
+    --primary-lt:  #e8f4fb;
+    --primary-mid: #2e86c1;
+    --secondary:   #5b8fa8;
+    --bg:          #f0f4f8;
+    --surface:     #ffffff;
+    --surface2:    #f7fafc;
+    --border:      #d1dde8;
+    --text:        #1a2733;
+    --text-muted:  #607080;
+    --success:     #1a7a4a;
+    --success-lt:  #e6f4ed;
+    --danger:      #b91c1c;
+    --danger-lt:   #fef2f2;
+    --warning:     #92600a;
+    --warning-lt:  #fffbeb;
+    --orange:      #c2560c;
+    --orange-lt:   #fff7ed;
+    --purple:      #5b42a8;
+    --purple-lt:   #f3f0ff;
+    --teal:        #0f766e;
+    --teal-lt:     #f0fdfa;
+    --pink:        #9d174d;
+    --pink-lt:     #fdf2f8;
+    --radius:      12px;
+    --shadow-sm:   0 1px 4px rgba(0,0,0,.07);
+    --shadow:      0 4px 16px rgba(0,0,0,.09);
+    --shadow-lg:   0 8px 30px rgba(0,0,0,.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Sarabun', sans-serif;
+    font-size: 15.5px;
+    line-height: 1.75;
+  }
+
+  /* ── TOP NAV BAR ───────────────────────────── */
+  .topbar {
+    background: linear-gradient(135deg, #1a5276 0%, #1d6fa4 60%, #2e86c1 100%);
+    color: #fff;
+    padding: 10px 0;
+    font-size: 12.5px;
+    letter-spacing: .05em;
+    border-bottom: 3px solid #a8d4ef;
+  }
+  .topbar-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .topbar-left { opacity: .85; }
+  .topbar-right { opacity: .85; }
+
+  /* ── MAIN WRAP ─────────────────────────────── */
+  .page-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 36px 16px 80px;
+  }
+
+  /* ── HEADER ────────────────────────────────── */
+  .page-header {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 36px 32px 28px;
+    margin-bottom: 28px;
+    border-top: 4px solid var(--primary);
+    animation: fadeDown .6s ease both;
+  }
+  .header-badge {
+    display: inline-block;
+    background: var(--primary-lt);
+    color: var(--primary);
+    border: 1px solid #b3d4ec;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    padding: 4px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .page-header h1 {
+    font-size: clamp(22px, 4.5vw, 34px);
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .page-header p {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  /* ── QUICK SUMMARY ─────────────────────────── */
+  .quick-summary {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow-sm);
+    animation: fadeUp .6s .08s ease both;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+  }
+  .topic-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text);
+    transition: all .2s;
+    cursor: default;
+  }
+  .topic-chip:hover {
+    background: var(--primary-lt);
+    border-color: #a8d0eb;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+  .topic-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ── ACCORDION CARDS ───────────────────────── */
+  .acc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    animation: fadeUp .5s ease both;
+    transition: box-shadow .25s;
+  }
+  .acc-card:hover { box-shadow: var(--shadow); }
+
+  .acc-card:nth-child(1) { animation-delay: .12s; }
+  .acc-card:nth-child(2) { animation-delay: .17s; }
+  .acc-card:nth-child(3) { animation-delay: .22s; }
+  .acc-card:nth-child(4) { animation-delay: .27s; }
+  .acc-card:nth-child(5) { animation-delay: .32s; }
+
+  .acc-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    border-bottom: 1px solid transparent;
+    transition: background .2s;
+  }
+  .acc-card.open .acc-header { border-bottom-color: var(--border); background: var(--surface2); }
+  .acc-header:hover { background: var(--surface2); }
+
+  .acc-toggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    transition: all .3s;
+    flex-shrink: 0;
+  }
+  .acc-card.open .acc-toggle {
+    transform: translateY(-50%) rotate(180deg);
+    background: var(--primary-lt);
+    color: var(--primary);
+    border-color: #a8d0eb;
+  }
+
+  .acc-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+
+  .acc-title { font-size: 15.5px; font-weight: 700; line-height: 1.3; }
+  .acc-sub   { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+
+  .acc-body { display: none; padding: 20px 22px 22px; }
+  .acc-card.open .acc-body { display: block; animation: expandIn .3s ease both; }
+
+  /* section color themes */
+  .t-blue   .acc-header  { border-left: 4px solid var(--primary); }
+  .t-blue   .acc-icon    { background: var(--primary-lt); color: var(--primary); }
+  .t-blue   .acc-title   { color: var(--primary); }
+
+  .t-purple .acc-header  { border-left: 4px solid var(--purple); }
+  .t-purple .acc-icon    { background: var(--purple-lt); color: var(--purple); }
+  .t-purple .acc-title   { color: var(--purple); }
+
+  .t-teal   .acc-header  { border-left: 4px solid var(--teal); }
+  .t-teal   .acc-icon    { background: var(--teal-lt); color: var(--teal); }
+  .t-teal   .acc-title   { color: var(--teal); }
+
+  .t-orange .acc-header  { border-left: 4px solid var(--orange); }
+  .t-orange .acc-icon    { background: var(--orange-lt); color: var(--orange); }
+  .t-orange .acc-title   { color: var(--orange); }
+
+  .t-pink   .acc-header  { border-left: 4px solid var(--pink); }
+  .t-pink   .acc-icon    { background: var(--pink-lt); color: var(--pink); }
+  .t-pink   .acc-title   { color: var(--pink); }
+
+  /* ── BLOCK TITLE ───────────────────────────── */
+  .block-title {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 18px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .block-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ── Q / A LISTS ───────────────────────────── */
+  .q-list, .a-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+
+  .q-list li {
+    background: var(--danger-lt);
+    border: 1px solid #fecaca;
+    border-radius: 9px;
+    padding: 9px 13px;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .q-list li::before {
+    content: '?';
+    background: #fca5a5;
+    color: var(--danger);
+    font-size: 10px;
+    font-weight: 800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .a-list li {
+    background: var(--success-lt);
+    border: 1px solid #a7f3d0;
+    border-radius: 9px;
+    padding: 9px 13px;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .a-list li::before {
+    content: '✓';
+    background: #6ee7b7;
+    color: var(--success);
+    font-size: 10px;
+    font-weight: 800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── FALLBACK BOX ──────────────────────────── */
+  .fallback-box {
+    margin-top: 14px;
+    background: var(--warning-lt);
+    border: 1px solid #fde68a;
+    border-left: 4px solid #f59e0b;
+    border-radius: 9px;
+    padding: 11px 15px;
+    font-size: 13.5px;
+    color: var(--warning);
+  }
+
+  /* ── DEEP CARD ─────────────────────────────── */
+  .deep-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 4px solid #e11d48;
+    border-radius: var(--radius);
+    padding: 22px 26px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    animation: fadeUp .5s .38s ease both;
+  }
+  .deep-card h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #e11d48;
+    margin-bottom: 14px;
+  }
+
+  /* ── FORMULA CARD ──────────────────────────── */
+  .formula-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--primary);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    animation: fadeUp .5s .43s ease both;
+  }
+  .formula-card h3 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 16px;
+  }
+  .formula-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .formula-pill {
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 14.5px;
+    font-weight: 700;
+  }
+  .pill-blue   { background: var(--primary-lt);  color: var(--primary);  border: 1.5px solid #a8d0eb; }
+  .pill-green  { background: var(--success-lt);  color: var(--success);  border: 1.5px solid #6ee7b7; }
+  .pill-purple { background: var(--purple-lt);   color: var(--purple);   border: 1.5px solid #c4b5fd; }
+  .pill-orange { background: var(--orange-lt);   color: var(--orange);   border: 1.5px solid #fdba74; }
+  .formula-plus { color: var(--text-muted); font-size: 18px; font-weight: 300; }
+  .formula-example {
+    margin-top: 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--primary);
+    border-radius: 9px;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .formula-example span { color: var(--teal); font-style: normal; font-weight: 600; }
+
+  /* ── DO/DON'T ──────────────────────────────── */
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+    animation: fadeUp .5s .47s ease both;
+  }
+  @media(max-width:575px){ .do-dont { grid-template-columns: 1fr; } }
+
+  .dont-box, .do-box {
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    border: 1px solid;
+    box-shadow: var(--shadow-sm);
+  }
+  .dont-box { background: var(--danger-lt);  border-color: #fecaca; }
+  .do-box   { background: var(--success-lt); border-color: #a7f3d0; }
+  .dont-box h4 { color: var(--danger);  font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 12px; }
+  .do-box   h4 { color: var(--success); font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 12px; }
+  .do-box ul, .dont-box ul { list-style: none; font-size: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .do-box   li::before { content: '✅ '; }
+  .dont-box li::before { content: '❌ '; }
+
+  /* ── EMERGENCY BOX ─────────────────────────── */
+  .emergency-box {
+    background: linear-gradient(135deg, #fffbeb, #fff7ed);
+    border: 1px solid #fde68a;
+    border-top: 4px solid #f59e0b;
+    border-radius: var(--radius);
+    padding: 26px 28px;
+    margin-bottom: 36px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    animation: fadeUp .5s .52s ease both;
+  }
+  .emergency-box h3 { font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #92600a; margin-bottom: 16px; }
+  .emergency-phrase {
+    font-size: 18px;
+    font-weight: 700;
+    color: #78350f;
+    padding: 16px 28px;
+    background: rgba(251,191,36,.12);
+    border: 2px dashed #fcd34d;
+    border-radius: 10px;
+    display: inline-block;
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ────────────────────────────────── */
+  .page-footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── ANIMATIONS ────────────────────────────── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes expandIn {
+    from { opacity: 0; transform: scaleY(.95); transform-origin: top; }
+    to   { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ── RESPONSIVE TWEAKS ─────────────────────── */
+  @media(max-width:575px){
+    .page-header  { padding: 24px 18px 20px; }
+    .acc-header   { padding: 15px 16px; }
+    .acc-body     { padding: 16px 16px 18px; }
+    .quick-summary{ padding: 18px 16px; }
+    .formula-card, .deep-card, .emergency-box { padding: 18px 16px; }
+    .acc-title    { font-size: 14px; }
+    .page-header h1 { font-size: 22px; }
+    .topics-grid  { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-left"><i class="bi bi-hospital"></i> กระทรวงสาธารณสุข · เขตสุขภาพที่ 9</span>
+    <span class="topbar-right"><i class="bi bi-shield-check"></i> คู่มือเตรียมตัวรับการตรวจ</span>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="header-badge"><i class="bi bi-journal-medical me-1"></i>คู่มือเตรียมตัว · IT โรงพยาบาล</div>
+    <h1><i class="bi bi-cpu me-2" style="color:#2e86c1"></i>แนวคำถามผู้ตรวจราชการ เขต 9<br><span style="font-size:.75em;color:#2e86c1;">สาย IT โรงพยาบาล</span></h1>
+    <p class="mt-1"><i class="bi bi-check2-circle me-1 text-success"></i>จำ 5 เรื่องหลัก &nbsp;·&nbsp; ตอบให้ถูกสูตร &nbsp;·&nbsp; รอดทุกสถานการณ์</p>
+  </div>
+
+  <!-- QUICK SUMMARY -->
+  <div class="quick-summary">
+    <div class="section-label"><i class="bi bi-bookmark-star-fill"></i>5 เรื่องที่ต้องจำให้ได้ก่อนเข้าหน้างาน</div>
+    <div class="topics-grid">
+      <div class="topic-chip"><span class="topic-num">1</span>ระบบหลัก (HIS)</div>
+      <div class="topic-chip"><span class="topic-num">2</span>Backup ข้อมูล</div>
+      <div class="topic-chip"><span class="topic-num">3</span>Cybersecurity / PDPA</div>
+      <div class="topic-chip"><span class="topic-num">4</span>Network / VPN</div>
+      <div class="topic-chip"><span class="topic-num">5</span>ส่งข้อมูล สธ.</div>
+    </div>
+  </div>
+
+  <!-- ACCORDION SECTIONS -->
+  <div id="sections">
+
+    <!-- 1. HIS -->
+    <div class="acc-card t-blue open">
+      <div class="acc-header" onclick="toggle(this)">
+        <div class="acc-icon"><i class="bi bi-display"></i></div>
+        <div>
+          <div class="acc-title">1. ระบบสารสนเทศโรงพยาบาล (HIS)</div>
+          <div class="acc-sub">HOSxP / JHCIS / ระบบหลักการให้บริการ</div>
+        </div>
+        <div class="acc-toggle"><i class="bi bi-chevron-down"></i></div>
+      </div>
+      <div class="acc-body">
+        <div class="block-title"><i class="bi bi-question-circle text-danger me-1"></i>คำถามที่เจอบ่อย</div>
+        <ul class="q-list">
+          <li>ใช้ระบบอะไร (เช่น HOSxP / JHCIS / อื่นๆ)</li>
+          <li>ระบบล่มบ่อยไหม มีผลกับการให้บริการอย่างไร</li>
+          <li>มีการสำรองข้อมูล (Backup) อย่างไร</li>
+        </ul>
+        <div class="block-title"><i class="bi bi-check-circle text-success me-1"></i>แนวตอบที่ดี</div>
+        <ul class="a-list">
+          <li>ใช้ระบบ <strong>…</strong> เป็นระบบหลักในการให้บริการผู้ป่วย</li>
+          <li>มีการสำรองข้อมูลทุกวัน และเก็บแยกเครื่อง / แยกสถานที่</li>
+          <li>มีแผนรองรับกรณีระบบล่ม เช่น ใช้งาน manual ชั่วคราว</li>
+        </ul>
+        <div class="fallback-box"><i class="bi bi-exclamation-triangle-fill me-2"></i><strong>ถ้าตอบไม่ได้:</strong> "ขออนุญาตตรวจสอบข้อมูลเชิงเทคนิคเพิ่มเติม และจะรายงานให้ทราบภายหลังครับ"</div>
+      </div>
+    </div>
+
+    <!-- 2. Cybersecurity -->
+    <div class="acc-card t-purple open">
+      <div class="acc-header" onclick="toggle(this)">
+        <div class="acc-icon"><i class="bi bi-shield-lock"></i></div>
+        <div>
+          <div class="acc-title">2. Cybersecurity / PDPA</div>
+          <div class="acc-sub">ความปลอดภัยข้อมูล · คุ้มครองข้อมูลส่วนบุคคล</div>
+        </div>
+        <div class="acc-toggle"><i class="bi bi-chevron-down"></i></div>
+      </div>
+      <div class="acc-body">
+        <div class="block-title"><i class="bi bi-question-circle text-danger me-1"></i>คำถามยอดฮิตมาก</div>
+        <ul class="q-list">
+          <li>มีนโยบายความปลอดภัยข้อมูลไหม</li>
+          <li>ป้องกันข้อมูลผู้ป่วยรั่วไหลอย่างไร</li>
+          <li>มีการอบรมบุคลากรเรื่อง PDPA ไหม</li>
+        </ul>
+        <div class="block-title"><i class="bi bi-check-circle text-success me-1"></i>แนวตอบที่ดี</div>
+        <ul class="a-list">
+          <li>มีนโยบายด้าน Cybersecurity และ PDPA ของหน่วยงาน</li>
+          <li>มีการกำหนดสิทธิ์การเข้าถึงข้อมูล (User / Password / Role)</li>
+          <li>มี Firewall / Antivirus / Backup ป้องกันข้อมูล</li>
+          <li>มีการอบรมเจ้าหน้าที่เป็นระยะอย่างสม่ำเสมอ</li>
+        </ul>
+        <div class="fallback-box"><i class="bi bi-exclamation-triangle-fill me-2"></i><strong>ถ้าตอบไม่ได้:</strong> "ในส่วนรายละเอียดเชิงนโยบาย ขออนุญาตประสานผู้รับผิดชอบหลัก และรายงานเพิ่มเติมครับ"</div>
+      </div>
+    </div>
+
+    <!-- 3. Network -->
+    <div class="acc-card t-teal open">
+      <div class="acc-header" onclick="toggle(this)">
+        <div class="acc-icon"><i class="bi bi-globe2"></i></div>
+        <div>
+          <div class="acc-title">3. ระบบ Network / Internet</div>
+          <div class="acc-sub">Backup Link · VPN · การเชื่อมต่อหน่วยงาน</div>
+        </div>
+        <div class="acc-toggle"><i class="bi bi-chevron-down"></i></div>
+      </div>
+      <div class="acc-body">
+        <div class="block-title"><i class="bi bi-question-circle text-danger me-1"></i>คำถามที่อาจโดน</div>
+        <ul class="q-list">
+          <li>ระบบอินเทอร์เน็ตมีปัญหาไหม</li>
+          <li>มีสำรอง (Backup Link) ไหม</li>
+          <li>เชื่อมต่อ รพ.สต. / หน่วยงานอื่นอย่างไร</li>
+        </ul>
+        <div class="block-title"><i class="bi bi-check-circle text-success me-1"></i>แนวตอบที่ดี</div>
+        <ul class="a-list">
+          <li>มีการเชื่อมต่อผ่าน VPN / Network ของ สธ.</li>
+          <li>มีการควบคุมผ่าน Firewall</li>
+          <li>มีการตรวจสอบระบบ Network สม่ำเสมอ</li>
+        </ul>
+        <div class="fallback-box"><i class="bi bi-lightbulb-fill me-2"></i><strong>เคล็ดลับ:</strong> ถ้ามีของจริง เช่น VPN / Fiber / 4G Backup → ตอบไปเลยจะดูดีมาก</div>
+      </div>
+    </div>
+
+    <!-- 4. 43 files / HDC -->
+    <div class="acc-card t-orange open">
+      <div class="acc-header" onclick="toggle(this)">
+        <div class="acc-icon"><i class="bi bi-bar-chart-line"></i></div>
+        <div>
+          <div class="acc-title">4. การเชื่อมโยงข้อมูล (Digital Health)</div>
+          <div class="acc-sub">HDC · 43 แฟ้ม · MOPH Connect</div>
+        </div>
+        <div class="acc-toggle"><i class="bi bi-chevron-down"></i></div>
+      </div>
+      <div class="acc-body">
+        <div class="block-title"><i class="bi bi-question-circle text-danger me-1"></i>คำถามที่ชอบถาม</div>
+        <ul class="q-list">
+          <li>ส่งข้อมูล 43 แฟ้มไหม ครบถ้วนหรือเปล่า</li>
+          <li>เชื่อม HDC / MOPH Connect ได้ไหม</li>
+          <li>ข้อมูลทันสมัยหรือไม่</li>
+        </ul>
+        <div class="block-title"><i class="bi bi-check-circle text-success me-1"></i>แนวตอบที่ดี</div>
+        <ul class="a-list">
+          <li>มีการส่งข้อมูลเข้าสู่ระบบ HDC อย่างสม่ำเสมอ</li>
+          <li>มีการตรวจสอบคุณภาพข้อมูล (Data Quality) อย่างต่อเนื่อง</li>
+          <li>มีผู้รับผิดชอบดูแลข้อมูลโดยตรง</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 5. Software/Hardware -->
+    <div class="acc-card t-pink open">
+      <div class="acc-header" onclick="toggle(this)">
+        <div class="acc-icon"><i class="bi bi-laptop"></i></div>
+        <div>
+          <div class="acc-title">5. อุปกรณ์ / Software</div>
+          <div class="acc-sub">ลิขสิทธิ์ · ความเพียงพอ · แผนจัดหา</div>
+        </div>
+        <div class="acc-toggle"><i class="bi bi-chevron-down"></i></div>
+      </div>
+      <div class="acc-body">
+        <div class="block-title"><i class="bi bi-question-circle text-danger me-1"></i>คำถามที่อาจโดน</div>
+        <ul class="q-list">
+          <li>ใช้ Software ถูกลิขสิทธิ์ไหม</li>
+          <li>เครื่องคอมพิวเตอร์เพียงพอกับงานไหม</li>
+        </ul>
+        <div class="block-title"><i class="bi bi-check-circle text-success me-1"></i>แนวตอบที่ดี</div>
+        <ul class="a-list">
+          <li>มีการจัดซื้อ Software ถูกลิขสิทธิ์ตามระเบียบ</li>
+          <li>มีแผนจัดหา / ทดแทนอุปกรณ์ตามรอบที่กำหนด</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /sections -->
+
+  <!-- DEEP QUESTIONS -->
+  <div class="deep-card mt-4">
+    <h3><i class="bi bi-fire me-2"></i>คำถามลึก (บางครั้งเจอ ถ้าโฟกัส IT จริง)</h3>
+    <ul class="q-list mb-3">
+      <li>มี DR Site (ศูนย์สำรอง) ไหม</li>
+      <li>Backup เก็บไว้ที่ไหน ออฟไซต์หรือเปล่า</li>
+      <li>เคยโดนไวรัส / แฮกไหม จัดการอย่างไร</li>
+    </ul>
+    <div class="block-title"><i class="bi bi-check-circle text-success me-1"></i>แนวตอบปลอดภัย</div>
+    <ul class="a-list">
+      <li>มีการ Backup และแยกเก็บข้อมูลเพื่อลดความเสี่ยง</li>
+      <li>มีมาตรการป้องกัน เช่น Firewall และ Antivirus</li>
+      <li>มีการเฝ้าระวังเหตุการณ์ด้านความปลอดภัยอย่างสม่ำเสมอ</li>
+    </ul>
+  </div>
+
+  <!-- FORMULA -->
+  <div class="formula-card">
+    <h3><i class="bi bi-diagram-3 me-2"></i>สูตรตอบมาตรฐาน</h3>
+    <div class="formula-row">
+      <span class="formula-pill pill-blue">มี</span>
+      <span class="formula-plus">+</span>
+      <span class="formula-pill pill-green">ทำ</span>
+      <span class="formula-plus">+</span>
+      <span class="formula-pill pill-purple">ตรวจสอบ</span>
+      <span class="formula-plus">+</span>
+      <span class="formula-pill pill-orange">พัฒนา</span>
+    </div>
+    <div class="formula-example">
+      <i class="bi bi-chat-left-quote me-1"></i>ตัวอย่าง: <span>"มีระบบสำรองข้อมูล ทำทุกวัน ตรวจสอบสม่ำเสมอ และมีการพัฒนาอย่างต่อเนื่อง"</span>
+    </div>
+  </div>
+
+  <!-- DO / DON'T -->
+  <div class="do-dont">
+    <div class="dont-box">
+      <h4><i class="bi bi-x-circle-fill me-1"></i>ห้ามตอบแบบนี้</h4>
+      <ul>
+        <li>ไม่รู้</li>
+        <li>ไม่ได้ทำ</li>
+        <li>ยังไม่มี</li>
+      </ul>
+    </div>
+    <div class="do-box">
+      <h4><i class="bi bi-check-circle-fill me-1"></i>เปลี่ยนเป็นแบบนี้</h4>
+      <ul>
+        <li>อยู่ระหว่างดำเนินการ</li>
+        <li>กำลังพัฒนา</li>
+        <li>มีแผนปรับปรุง</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- EMERGENCY PHRASE -->
+  <div class="emergency-box">
+    <h3><i class="bi bi-shield-fill-check me-2"></i>ประโยคฉุกเฉิน · ใช้ได้ทุกสถานการณ์</h3>
+    <div class="emergency-phrase">
+      "ขออนุญาตตรวจสอบข้อมูลเพิ่มเติม<br>และจะรายงานให้ทราบครับ"
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="page-footer">
+    <p><i class="bi bi-hospital me-1"></i> คู่มือเตรียมตัว · สาย IT โรงพยาบาล · ผู้ตรวจราชการ เขต 9</p>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function toggle(header) {
+    const card = header.closest('.acc-card');
+    card.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
